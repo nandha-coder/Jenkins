@@ -1,12 +1,11 @@
 pipeline {
-  agent none
+  agent {
+    docker { image 'node:16-alpine' }
+  }
   stages {
-    stage('Front-end') {
-      agent {
-        docker { image 'busybox' }
-      }
+    stage('Test') {
       steps {
-        sh 'cat /etc/os-release'
+        sh 'node --version'
       }
     }
   }
