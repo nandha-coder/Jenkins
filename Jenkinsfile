@@ -10,7 +10,17 @@ pipeline {
                 git 'https://github.com/jaiswaladi246/secretsanta-generator.git'
             }
         }		
-	    stage('Code Build Checkout') {
+	stage('Code Compile') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+	stage('Unit Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+	stage('Code Build') {
             steps {
                 sh 'mvn clean package'
             }
