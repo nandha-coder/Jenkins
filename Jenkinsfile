@@ -12,7 +12,7 @@ pipeline {
         }		
 	stage('Code Compile') {
             steps {
-                sh 'mvn clean compile'
+                sh 'echo ${BUILD_NUMBER} > abc.txt && mvn clean compile'
             }
         }
 	stage('Unit Test') {
