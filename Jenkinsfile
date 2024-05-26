@@ -41,7 +41,7 @@ pipeline {
 				DOCKER_IMAGE = "nandyuvi/9043:${BUILD_NUMBER}"
 				}
             steps {
-                sh 'docker build -t ${DOCKER_IMAGE}' .'
+                sh 'docker build -t ${DOCKER_IMAGE} .'
             }
         }
 	stage('Image Push') {
