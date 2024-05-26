@@ -1,14 +1,19 @@
 pipeline {
-  agent {
-        docker { 
-		image 'busybox'
-	        args  'sleep 10000000'}
-		}
-  stages {
-    stage('Front-end') {
-      steps {
-        sh 'cat /etc/os-release'
-      }
-    }
-  }
+    agent any
+
+    stages {
+        stage('GIT Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jaiswaladi246/secretsanta-generator.git']])
+            }
+        }
+		
+		stage('Code Build Checkout') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+		
+		
+    }    
 }
