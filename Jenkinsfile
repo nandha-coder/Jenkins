@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('GIT Checkout') {
             steps {
-                git 'https://github.com/nandha-coder/Jenkins.git'
+                git 'https://github.com/jaiswaladi246/secretsanta-generator.git'
             }
         }		
 	    stage('Code Build Checkout') {
