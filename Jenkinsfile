@@ -44,5 +44,17 @@ pipeline {
                 sh 'docker build -t ${DOCKER_IMAGE} .'
             }
         }
+	stage('Image Push') {
+	      environment {
+		DOCKER_IMAGE = "nandyuvi/9043:${BUILD_NUMBER}"
+				}
+            steps {
+		script {
+		withDockerRegistry(credentialsId: 'docker-username-password') {
+			sh "docker push ${DOCKER_IMAGE}"
+			}
+		}
+            }
+        }
         }
 }
