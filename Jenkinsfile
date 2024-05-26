@@ -35,5 +35,22 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+		
+	stage('Image Build') {
+	      environment {
+				DOCKER_IMAGE = "nandyuvi/9043:${BUILD_NUMBER}"
+				}
+            steps {
+                sh 'docker build -t ${DOCKER_IMAGE}' .
+            }
+        }
+	stage('Image Push') {
+	      environment {
+					DOCKER_IMAGE = "nandyuvi/9043:${BUILD_NUMBER}"
+				}
+            steps {
+                sh "docker push ${DOCKER_IMAGE}"
+            }
+        }		
         }
 }
