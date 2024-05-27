@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('GIT Checkout') {
             steps {
-                git 'https://github.com/jaiswaladi246/secretsanta-generator.git'
+                git 'https://github.com/nandha-coder/secretsanta-nandha.git'
             }
         }		
 	stage('Code Compile') {
